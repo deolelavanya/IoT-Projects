@@ -24,7 +24,7 @@ communication and monitoring concepts.
 
 ## Project Structure
 
-project-1-telemetry/
+iot-device-simulator/
 ├── host_receiver.py
 ├── device_sim.py
 ├── command_client.py
