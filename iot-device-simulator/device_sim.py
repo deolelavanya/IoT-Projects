@@ -50,7 +50,7 @@ def telemetry_loop():
     while True:
         try:
             with socket.create_connection((HOST, TELEMETRY_PORT), timeout=5) as sock:
-                print(f"[device {DEVICE_ID}] Telemetry connected ✅ streaming...")
+                print(f"[device {DEVICE_ID}] Telemetry connected streaming...")
                 while True:
                     msg = make_telemetry()
                     sock.sendall((json.dumps(msg) + "\n").encode("utf-8"))
@@ -129,7 +129,7 @@ def command_server():
         server.listen(5)
         while True:
             conn, addr = server.accept()
-            print(f"[device {DEVICE_ID}] Command client connected from {addr} ✅")
+            print(f"[device {DEVICE_ID}] Command client connected from {addr}")
             with conn:
                 handle_command(conn, addr)
             print(f"[device {DEVICE_ID}] Command client disconnected.")
@@ -149,3 +149,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
