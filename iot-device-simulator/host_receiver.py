@@ -64,7 +64,7 @@ def append_log(entry: dict):
 
 
 def handle_device(conn: socket.socket, addr, client_id: int):
-    print(f"[host] Device #{client_id} connected from {addr} ✅")
+    print(f"[host] Device #{client_id} connected from {addr}")
     buffer = ""
 
     stats = {
@@ -114,11 +114,11 @@ def handle_device(conn: socket.socket, addr, client_id: int):
                 try:
                     msg = json.loads(line)
                 except json.JSONDecodeError:
-                    print(f"[host] ⚠️ Device #{client_id} invalid JSON:", line[:120])
+                    print(f"[host] Warning: Device #{client_id} invalid JSON:", line[:120])
                     continue
 
                 if not validate(msg):
-                    print(f"[host] ⚠️ Device #{client_id} missing fields:", msg)
+                    print(f"[host] Warning: Device #{client_id} missing fields:", msg)
                     continue
 
                 # Update known device_id
@@ -174,3 +174,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
